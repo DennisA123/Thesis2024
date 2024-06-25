@@ -1,0 +1,47 @@
+{"list1": ["This person is a man.", 
+            "This person is a father.", 
+            "This person is a brother.", 
+            "This person is a nephew.", 
+            "This person is an uncle.", 
+            "This person is a grandfather.", 
+            "This person is a son.", 
+            "This person is a husband.", 
+            "This person is a king.", 
+            "This person is a prince."
+        ],
+
+ "list2": ["This person is a woman.", 
+            "This person is a mother.", 
+            "This person is a sister.", 
+            "This person is a niece.", 
+            "This person is an aunt.", 
+            "This person is a grandmother.", 
+            "This person is a daughter.", 
+            "This person is a wife.", 
+            "This person is a queen.", 
+            "This person is a princess."
+        ],
+
+"list3": ["This person is a carpenter.", 
+        "This person is a mechanician.", 
+        "This person is a construction worker.", 
+        "This person is a laborer.", 
+        "This person is a driver.", 
+        "This person is a sheriff.", 
+        "This person is a mover.", 
+        "This person is a developer.", 
+        "This person is a farmer.", 
+        "This person is a guard."
+    ], 
+
+"list4": ["This person is an editor.", 
+       "This person is a designer.", 
+       "This person is an accountant.", 
+       "This person is an auditor.", 
+       "This person is a writer.", 
+       "This person is a baker.", 
+       "This person is a clerk.", 
+       "This person is a cashier.", 
+       "This person is a counselor.", 
+       "This person is an attendant."
+    ]}

@@ -2,7 +2,7 @@
 /testenv/
 
 /Assessment/__pycache__/
-/Assessment/Data/
+# /Assessment/Data/
 
 /T_DM/__pycache__/
 /T_DM/Data/
