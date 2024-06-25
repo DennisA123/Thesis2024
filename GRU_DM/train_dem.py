@@ -11,6 +11,10 @@ import sys
 import random
 from sklearn.model_selection import train_test_split
 
+'''
+    Training loop code from: https://github.com/zgahhblhc/Debiased-Chat
+'''
+
 random.seed(8)
 
 stop_words = stopwords.words('english')

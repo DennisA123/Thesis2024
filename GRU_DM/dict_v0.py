@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-
-# Copyright (c) Facebook, Inc. and its affiliates.
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
-"""Contains code for parsing and building a dictionary from text."""
-
 from parlai.core.build_data import modelzoo_path
 from parlai.core.agents import Agent
 from parlai.core.build_data import make_dir
@@ -15,6 +8,10 @@ import numpy as np
 import os
 import pickle
 import re
+
+'''
+    All code from: https://github.com/zgahhblhc/Debiased-Chat
+'''
 
 try:
     from subword_nmt import learn_bpe, apply_bpe

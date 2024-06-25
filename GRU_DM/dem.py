@@ -10,6 +10,10 @@ from torch.nn.utils.rnn import pad_packed_sequence, pack_padded_sequence
 import torch.nn.functional as F
 from dict_v0 import DictionaryAgent
 
+'''
+    All code from: https://github.com/zgahhblhc/Debiased-Chat
+'''
+
 class Autoencoder(nn.Module):
     def __init__(self, emb_size, hidden_size, unbias_size, content_size, dict_file, dropout, rnn_class, device):
         super().__init__()
