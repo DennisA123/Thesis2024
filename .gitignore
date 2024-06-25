@@ -2,17 +2,19 @@
 /testenv/
 
 /Assessment/__pycache__/
-# /Assessment/Data/
 
 /T_DM/__pycache__/
-# /T_DM/Data/
+# /T_DM/Data/bloom_tokenized_test_texts.pt
+# /T_DM/Data/bloom_tokenized_train_texts.pt
 
 /GRU_DM/__pycache__/
 /GRU_DM/dict.dict
-# /GRU_DM/Data/
 
 /Debiasing/__pycache__/
-# /Debiasing/Data/
+/Debiasing/Data/tokenized_X_gender_G.pt
+/Debiasing/Data/tokenized_XY_gender_G.pt
+/Debiasing/Data/tokenized_XY_neutral_G.pt
+/Debiasing/Data/tokenized_Y_gender_G.pt
 
 /Models/
 /Images/
