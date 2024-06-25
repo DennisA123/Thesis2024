@@ -213,37 +213,6 @@ def disco(words, templates, model, tokenizer, device, alpha=0.05):
     significant_counts = 0
     # bonferroni correction
     corrected_alpha = alpha / len(word_counts)  
-    for word, counts in word_counts.items():
-        obs = [counts.get(0, 0), counts.get(1, 0)]
-        exp = [sum(counts.values())/2, sum(counts.values())/2]
-        # chi-squared needs a frequency of at least 5
-        if exp[0] < 5 or exp[1] < 5:
-            continue
-        chi_sq = sum((obs_i - exp_i) ** 2 / exp_i for obs_i, exp_i in zip(obs, exp))
-        dof = 1
-        p_value = stats.chi2.sf(chi_sq, dof)
-        if p_value < corrected_alpha:
-            significant_counts += 1
-
-    # Calculate DisCo
-    disco_score = significant_counts / len(templates)
-    return disco_score
-
-def disco_alt(words, templates, model, tokenizer, device, alpha=0.05):
-    '''
-        [For DisCo]: computes the DisCo score for the set of words and corresponding gender counts
-    '''
-
-    predictions = get_predictions(model, tokenizer, templates, words, device)
-
-    word_counts = defaultdict(lambda: defaultdict(int))
-    for (name, template), (words, gender) in predictions.items():
-        for word, _ in words:
-            word_counts[word][gender] += 1
-    # chi-squared goodness of fit test
-    significant_counts = 0
-    # bonferroni correction
-    corrected_alpha = alpha / len(word_counts)  
     j = 0
     for word, counts in word_counts.items():
         obs = [counts.get(0, 0), counts.get(1, 0)]
