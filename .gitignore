@@ -9,7 +9,7 @@
 
 /GRU_DM/__pycache__/
 /GRU_DM/dict.dict
-/GRU_DM/Data/
+# /GRU_DM/Data/
 
 /Debiasing/__pycache__/
 /Debiasing/Data/
