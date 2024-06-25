@@ -93,4 +93,4 @@ The file `requirements.txt` contains the necessary packages. All experiments wer
 `Models/` 
 - `Models/`: Stores the fine-tuned LLM after training.
 
-* The code in these files integrates much code that was not made by me, but was retrieved from https://github.com/zgahhblhc/Debiased-Chat
+\* The code in these files integrates much code that was not made by me, but was retrieved from https://github.com/zgahhblhc/Debiased-Chat
