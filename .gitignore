@@ -12,7 +12,7 @@
 # /GRU_DM/Data/
 
 /Debiasing/__pycache__/
-/Debiasing/Data/
+# /Debiasing/Data/
 
 /Models/
 /Images/
