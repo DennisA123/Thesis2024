@@ -49,12 +49,12 @@ The file `requirements.txt` contains the necessary packages. All experiments wer
 `GRU_DM/`  
 ├── `Data/`  
 ├── `main_dem.py`  
-├── `dem.py`  
-├── `train_dem.py`  
+├── `dem.py`*    
+├── `train_dem.py`*    
 ├── `eval_dem.py`  
 ├── `utils.py`  
-├── `dict_v0.py`  
-├── `dict.dict`  
+├── `dict_v0.py`*    
+├── `dict.dict`*    
 
 - `Data/`: Contains the datasets used for generating the BoW vectors, training the DM and evaluating the GRU-DM.  
 - `main_dem.py`:  Pre-processes the test data. Main file for running the evaluation experiments of the GRU-DM.  
@@ -75,12 +75,12 @@ The file `requirements.txt` contains the necessary packages. All experiments wer
 
 `Debiasing/`  
 ├── `Data/`  
-├── `dem.py`  
+├── `dem.py`*    
 ├── `discriminators.py`  
 ├── `train_dialogue.py`  
 ├── `evaluate_dialogue.ipynb`  
 ├── `utils.py`  
-├── `dict_v0.py`  
+├── `dict_v0.py`*    
 
 - `Data/`: Contains the datasets used for training and evaluating the LLM.  
 - `dem.py`: Contains the architecture of the GRU-DM for easy access.  
@@ -91,4 +91,6 @@ The file `requirements.txt` contains the necessary packages. All experiments wer
 - `dict_v0.py`:  Contains code to generate the dictionary used for the GRU-DM.  
 
 `Models/` 
-- `Models/`: Stores the fine-tuned LLM after training.  
+- `Models/`: Stores the fine-tuned LLM after training.
+
+* The code in these files integrates much code that was not made by me, but was retrieved from https://github.com/zgahhblhc/Debiased-Chat
