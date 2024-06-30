@@ -1,4 +1,4 @@
-# Master Thesis Artificial Intelligence: Gender Bias Assessment and Mitigation in Large Language Models
+# Master Thesis Artificial Intelligence: Assessing and Addressing Gender Bias in Large Language Models
 
 This is the repository for my Master Thesis at the University of Amsterdam.
 
