@@ -17,7 +17,7 @@
 /Debiasing/Data/tokenized_Y_gender_G.pt
 
 /Models/
-/Images/
+# /Images/
 
 /losses_test.py
 /DB_test_output.ipynb

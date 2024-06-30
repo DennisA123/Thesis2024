@@ -199,7 +199,7 @@ if __name__ == "__main__":
 
         if args.save_G and q % 20 == 0:
             print(f'Saving model checkpoint (iteration {q})')
-            G_model.save_pretrained(f'./Models/G_{args.loop}_{args.batch_size}')
+            G_model.save_pretrained(f'./Models/DB_BLOOM')
 
-        if q == args.loop:
-            break
+        # if q == args.loop:
+        #     break
