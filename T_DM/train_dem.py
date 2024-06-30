@@ -1,10 +1,7 @@
 from utils import *
 from dem import *
-
 # nltk.download('punkt')
-
 import torch
-# torch.cuda.empty_cache()
 import torch.optim as optim
 
 def train_dem(model, tokenizer, tokenizer_name, D1, D2, D3, D4, train_dataloader, epochs, lr, k_values, verbose, save_dem, device):
@@ -15,20 +12,16 @@ def train_dem(model, tokenizer, tokenizer_name, D1, D2, D3, D4, train_dataloader
     D3.train()
     D4.train()
 
-    # lowest_loss = float('inf')
     best_model_state = None
     best_D1_state = None
     best_D2_state = None
 
-    # range: (0, inf)
     cross_ent = nn.CrossEntropyLoss()
     cross_ent_recon = nn.CrossEntropyLoss(ignore_index=tokenizer.pad_token_id)
 
     D2_optimizer = optim.Adam(D2.parameters(), lr=lr)
     D3_optimizer = optim.Adam(D3.parameters(), lr=lr)
     rest_optimizer = optim.Adam(list(model.parameters()) + list(D1.parameters()) + list(D4.parameters()), lr=lr)
-    # rest_optimizer = optim.Adam(list(model.parameters()) + list(D1.parameters()), lr=lr)
-    # rest_optimizer = optim.Adam(model.parameters(), lr=lr)
 
     all_epochs_losses_d2_succ = []
     all_epochs_losses_d3_succ = []
@@ -67,7 +60,6 @@ def train_dem(model, tokenizer, tokenizer_name, D1, D2, D3, D4, train_dataloader
             ce_loss_D2 = cross_ent(ps, input_labels)
             D2_optimizer.zero_grad()
             ce_loss_D2.backward()
-            # torch.nn.utils.clip_grad_norm_(list(D2.parameters()), 0.25)
             D2_optimizer.step()
             epoch_d2_succ_loss += ce_loss_D2.item()
 
@@ -79,7 +71,6 @@ def train_dem(model, tokenizer, tokenizer_name, D1, D2, D3, D4, train_dataloader
             ce_loss_D3 = cross_ent(ku, input_BOW)
             D3_optimizer.zero_grad()
             ce_loss_D3.backward()
-            # torch.nn.utils.clip_grad_norm_(list(D3.parameters()), 0.25)
             D3_optimizer.step()
             epoch_d3_succ_loss += ce_loss_D3.item()
 
@@ -108,7 +99,6 @@ def train_dem(model, tokenizer, tokenizer_name, D1, D2, D3, D4, train_dataloader
             loss = k_values[0] * loss_rec + k_values[1] * loss_D1 + k_values[2] * loss_D2 + k_values[3] * loss_D3 + k_values[4] * loss_D4
             rest_optimizer.zero_grad()
             loss.backward()
-            # torch.nn.utils.clip_grad_norm_(list(model.parameters()) + list(D1.parameters()) + list(D4.parameters()), 0.25)
             rest_optimizer.step()
             epoch_comb_loss += loss.item()
             epoch_recon_loss += loss_rec.item()
@@ -136,13 +126,6 @@ def train_dem(model, tokenizer, tokenizer_name, D1, D2, D3, D4, train_dataloader
         all_epochs_losses_d4_succ.append(avg_d4_succ_loss)
         all_epochs_losses_comb.append(avg_combined_loss)
 
-        # if avg_combined_loss < lowest_loss:
-        #     lowest_loss = avg_combined_loss
-        #     # Save the model states if this is the best epoch so far
-        #     best_model_state = {key: value.cpu().clone() for key, value in model.state_dict().items()}
-        #     best_D1_state = {key: value.cpu().clone() for key, value in D1.state_dict().items()}
-        #     best_D2_state = {key: value.cpu().clone() for key, value in D2.state_dict().items()}
-        
         if verbose:
             print('')
             print('ADVERSARIAL LOSSES:')
@@ -161,9 +144,9 @@ def train_dem(model, tokenizer, tokenizer_name, D1, D2, D3, D4, train_dataloader
         best_model_state = {key: value.cpu().clone() for key, value in model.state_dict().items()}
         best_D1_state = {key: value.cpu().clone() for key, value in D1.state_dict().items()}
         best_D2_state = {key: value.cpu().clone() for key, value in D2.state_dict().items()}
-        torch.save(best_model_state, f'./Models/dem_{tokenizer_name}_{lr}.pth')
-        torch.save(best_D1_state, f'./Models/D1_{tokenizer_name}_{lr}.pth')
-        torch.save(best_D2_state, f'./Models/D2_{tokenizer_name}_{lr}.pth')
-
-    all_losses = [all_epochs_losses_d2_succ, all_epochs_losses_d3_succ, all_epochs_losses_recon, all_epochs_losses_d1_succ, all_epochs_losses_d2_fail, all_epochs_losses_d3_fail, all_epochs_losses_d4_succ, all_epochs_losses_comb]
-    save_plot_all(all_losses)
+        # torch.save(best_model_state, f'./Models/dem_{tokenizer_name}_{lr}.pth')
+        # torch.save(best_D1_state, f'./Models/D1_{tokenizer_name}_{lr}.pth')
+        # torch.save(best_D2_state, f'./Models/D2_{tokenizer_name}_{lr}.pth')
+        torch.save(best_model_state, f'./Models/dem.pth')
+        torch.save(best_D1_state, f'./Models/D1.pth')
+        torch.save(best_D2_state, f'./Models/D2.pth')

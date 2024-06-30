@@ -7,6 +7,7 @@ import torch.optim as optim
 from nltk.corpus import stopwords
 from dem import Autoencoder
 from utils import pad, EntropyLoss, accuracy, eval_loss, bow_loss, get_bow
+torch.cuda.empty_cache()
 import sys
 import random
 from sklearn.model_selection import train_test_split
@@ -14,6 +15,11 @@ from sklearn.model_selection import train_test_split
 '''
     Training loop code from: https://github.com/zgahhblhc/Debiased-Chat
 '''
+
+# python ./GRU_DM/train_dem.py
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print(f"Using device: {device}")
 
 random.seed(8)
 
@@ -26,8 +32,6 @@ for line in word_lines:
     gender_words.append(male_word)
     gender_words.append(female_word)
 remove_words = list(set(stop_words + gender_words))
-
-device = torch.device("cuda")
 
 opt = {'emb_size': 300, 'hidden_size': 1000, 'unbias_size': 500, 'content_size': 500, 'rnn_class': nn.GRU, 'dropout': 0.0}
 model = Autoencoder(emb_size=opt['emb_size'], hidden_size=opt['hidden_size'], unbias_size=opt['unbias_size'], content_size=opt['content_size'],

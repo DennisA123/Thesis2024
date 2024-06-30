@@ -134,7 +134,6 @@ def store_vocab(store_dir, texts, retrieved_rem):
     processed_texts = []
     for text in tqdm(texts):
         words = nltk.word_tokenize(text.lower())
-        # NOTE: keep or remove isalpha?
         filtered_words = [word for word in words if word.isalpha() and word not in retrieved_rem]
         processed_texts.extend(filtered_words)
     vocab = list(Counter(processed_texts).keys())
@@ -187,7 +186,7 @@ def plot_tsne(tsne_results, labels, title, name=''):
     plt.xlabel('t-SNE Dimension 1')
     plt.ylabel('t-SNE Dimension 2')
     plt.legend()
-    plt.savefig(f'./Images/T_tsne_eval_vis_{name}.png', dpi=300)
+    plt.savefig(f'./Images/T_tsne_eval_viss_{name}.png', dpi=300)
     plt.close()
 
 # ----------------------------------------------------------------------------------------------------------

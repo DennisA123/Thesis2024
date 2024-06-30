@@ -15,6 +15,7 @@ torch.cuda.empty_cache()
 import argparse
 from torch.utils.data import DataLoader
 
+# e.g:
 # python ./T_DM/main_dem.py --save_dem --verbose --what train
 # python ./T_DM/main_dem.py --what eval
 parser = argparse.ArgumentParser()
@@ -31,7 +32,7 @@ parser.add_argument('--what', choices=['train', 'eval'], help='Whether to train 
 parser.add_argument('--dem_name', type=str, default='./Models/dem_bloom_0.001.pth')
 parser.add_argument('--D1_name', type=str, default='./Models/D1_bloom_0.001.pth')
 parser.add_argument('--D2_name', type=str, default='./Models/D2_bloom_0.001.pth')
-parser.add_argument('--n_visualize', type=int, default=250, help='Number of datapoints per gender to visualize with PCA')
+parser.add_argument('--n_visualize', type=int, default=250, help='Number of datapoints per gender to visualize with t-SNE')
 
 args = parser.parse_args()
 

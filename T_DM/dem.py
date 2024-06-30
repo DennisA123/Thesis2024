@@ -102,7 +102,6 @@ class TransformerAutoencoder(nn.Module):
         encoder_output = self.encoder(encoder_input, src_key_padding_mask=transformer_mask)
         # (batch size, largest seq len x d_model)
         ae_input = encoder_output.view(encoder_output.shape[0], encoder_output.shape[1] * encoder_output.shape[2])
-
         # (batch_size, d_model)
         h = self.ae_encode(ae_input)
         # (batch size, u)

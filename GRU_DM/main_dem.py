@@ -11,11 +11,11 @@ torch.cuda.empty_cache()
 import argparse
 import sys
 
-# python ./3_mit_sandbox/main_dem.py --n_visualize 250 --dem_name ./Models/their_NEW_DM.pt
+# python ./GRU_DM/main_dem.py --dem_name ./Models/gru_dm.pt
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', type=int, default=32, help='Batch size for training')
-parser.add_argument('--dem_name', type=str, default='./Models/their_NEW_DM.pt')
-parser.add_argument('--n_visualize', type=int, default=75, help='Number of datapoints per gender to visualize with PCA')
+parser.add_argument('--dem_name', type=str, default='./Models/gru_dm.pt')
+parser.add_argument('--n_visualize', type=int, default=250, help='Number of datapoints per gender to visualize with t-SNE')
 
 args = parser.parse_args()
 
