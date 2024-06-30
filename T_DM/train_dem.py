@@ -144,9 +144,6 @@ def train_dem(model, tokenizer, tokenizer_name, D1, D2, D3, D4, train_dataloader
         best_model_state = {key: value.cpu().clone() for key, value in model.state_dict().items()}
         best_D1_state = {key: value.cpu().clone() for key, value in D1.state_dict().items()}
         best_D2_state = {key: value.cpu().clone() for key, value in D2.state_dict().items()}
-        # torch.save(best_model_state, f'./Models/dem_{tokenizer_name}_{lr}.pth')
-        # torch.save(best_D1_state, f'./Models/D1_{tokenizer_name}_{lr}.pth')
-        # torch.save(best_D2_state, f'./Models/D2_{tokenizer_name}_{lr}.pth')
-        torch.save(best_model_state, f'./Models/dem.pth')
-        torch.save(best_D1_state, f'./Models/D1.pth')
-        torch.save(best_D2_state, f'./Models/D2.pth')
+        torch.save(best_model_state, f'./Models/dem_{tokenizer_name}_{lr}.pth')
+        torch.save(best_D1_state, f'./Models/D1_{tokenizer_name}_{lr}.pth')
+        torch.save(best_D2_state, f'./Models/D2_{tokenizer_name}_{lr}.pth')

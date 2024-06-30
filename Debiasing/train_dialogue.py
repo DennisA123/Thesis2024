@@ -20,7 +20,6 @@ parser.add_argument('--store_data', action='store_true', help='Create the necess
 parser.add_argument('--batch_size', type=int, default=16, help='Batch size for training')
 parser.add_argument('--prompts_len', type=int, default=20, help='Max length for output of LM')
 parser.add_argument('--lr', type=float, default=0.001, help='Learning rate for optimizers')
-parser.add_argument('--loop', type=int, default=50, help='How often to do the training loop')
 parser.add_argument('--u', type=int, default=500, help='unbiased gender vector size')
 parser.add_argument('--s', type=int, default=500, help='semantic vector size')
 parser.add_argument('--save_G', action='store_true', help='Store dialogue model')
@@ -200,6 +199,3 @@ if __name__ == "__main__":
         if args.save_G and q % 20 == 0:
             print(f'Saving model checkpoint (iteration {q})')
             G_model.save_pretrained(f'./Models/DB_BLOOM')
-
-        # if q == args.loop:
-        #     break
